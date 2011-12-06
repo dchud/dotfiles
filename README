@@ -3,5 +3,10 @@ dchud's humble little dotfiles.
 I lost track of my extensive dotfiles from last
 job. That. Will. Never. Happen. Again.
 
+Basic idea, if it isn't obvious: check this out as a project on any host
+i do anyting on.  Soft link to the files in the git repo / project dir
+from dotfiles in home dir.  Try to remember to commit and push back to
+github whenever i make changes.  Live happily ever after.
+
 
 This work is dedicated to the public domain.

@@ -1,0 +1,5 @@
+autodetach on
+defscrollback 30000
+escape ^Oo
+startup_message off
+vbell on

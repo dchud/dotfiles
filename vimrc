@@ -9,6 +9,7 @@ set mat=5
 set ruler
 set noerrorbells
 set incsearch
+map ? :set hls!<bar>set hls?<CR>
 inoremap <Nul> <C-x><C-o>
 
 autocmd FileType python set omnifunc=pythoncomplete#Complete

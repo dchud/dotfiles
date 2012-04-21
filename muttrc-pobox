@@ -1,0 +1,48 @@
+# based on pobox/mutt notes at:
+#   http://www.pobox.com/helpspot/index.php?pg=kb.page&id=130
+set imap_user="USERNAME@pobox.com"
+set imap_pass="A WORKING PASSWORD"
+set spoolfile={mail.pobox.com/ssl}
+set folder={mail.pobox.com/ssl}
+mailboxes {mail.pobox.com/ssl}
+set record="+INBOX.Sent"
+set postponed="+INBOX.Drafts"
+set beep=no
+set realname="YOUR NAME"
+set from="YOUR EMAIL ADDRESS"
+set use_from=yes
+set use_envelope_from=yes
+set sort=threads
+set arrow_cursor
+set header_cache=~/.mail/.hcache
+set implicit_autoview
+auto_view text/html
+set mailcap_path="~/.mailcap"
+
+bind index ' ' next-page
+bind index '-' previous-page
+bind index c mail
+bind index g change-folder
+bind index x sync-mailbox
+
+bind pager ' ' next-page
+bind pager '-' previous-page
+bind pager c mail
+bind pager g change-folder
+
+color index     blue    default "~C YOURNICK"  # to or cc YOURNICK
+color index     red     default ~D          # deleted
+color index     green   default ~U          # unread
+color index     yellow  default ~T          # tagged
+color indicator black   yellow
+color message   black   red
+color quoted1   cyan    black
+color quoted2   green   black
+color quoted3   blue    black
+color quoted4   yellow  black
+color quoted5   red     black
+color quoted6   cyan    black
+color signature blue    black
+color status    blue    black
+color tree      cyan    black 
+

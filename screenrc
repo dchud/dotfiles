@@ -1,5 +1,6 @@
 autodetach on
 defscrollback 30000
+defutf8 on
 escape ^Oo
 startup_message off
 vbell on

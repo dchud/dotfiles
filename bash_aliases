@@ -7,3 +7,5 @@ alias enscript='enscript -DDuplex:true -G2r --font=Courier10 --mark-wrapped-line
 alias acs='apt-cache search'
 alias sagi='sudo apt-get install'
 alias sagu='sudo apt-get update; sudo apt-get upgrade'
+
+alias seba='source ENV/bin/activate'

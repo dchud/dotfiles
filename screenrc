@@ -1,6 +1,22 @@
 autodetach on
 defscrollback 30000
 defutf8 on
-escape ^Oo
+#escape ^Oo
+escape ^|\
 startup_message off
 vbell on
+
+bindkey "^[Od" prev  # change window with ctrl-left
+bindkey "^[Oc" next  # change window with ctrl-right
+
+screen -t sys       0 
+screen -t model     1
+screen -t view      2 
+screen -t tmpl      3 
+screen -t sys       4 
+select 0
+
+#caption always "%?%{ Wk}%-Lw%?%{Rk}%n*%f %t%?(%u)%?%?%{Wk}%+Lw%? %{Rk}%=%c %{rk}%d/%M/%Y"
+hardstatus alwayslastline
+#hardstatus string "%{+b Rk}(%{-b g}$LOGNAME@%H%{+b R}) (%{-b g}%C %a%{+b R}) %{-b g} %n %t %h"
+hardstatus string '%{= kG}%-Lw%{= kW}%50> %n*%f %t%{= kG}%+Lw%< %{= kG}%-=%D %m/%d/%y | %C:%s %A | %1`%{-}'

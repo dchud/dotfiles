@@ -20,10 +20,26 @@ autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType c set omnifunc=ccomplete#Complete
 
-call pathogen#infect()
+" taglist plugin config http://vim-taglist.sourceforge.net/manual.html
+" Ctrl-\ toggles view of taglist
+nnoremap <silent> <C-\> :TlistToggle<CR>
+" Option-\ jumps to taglist buffer (OSX)
+nnoremap <silent> « <C-w>h
+let Tlist_Auto_Highlight_Tag = 1
+let Tlist_Auto_Open = 1
+let TList_Auto_Update = 1
+let Tlist_Exit_OnlyWindow = 1
+let Tlist_GainFocus_On_ToggleOpen = 1
+
+execute pathogen#infect()
 filetype plugin indent on
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:vim_markdown_folding_disabled=1
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_loc_list_height = 5

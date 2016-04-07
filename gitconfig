@@ -3,3 +3,5 @@
 	email = dchud@umich.edu
 [core]
 	excludesfile = /Users/dchud/.global_ignore
+[push]
+	default = simple

@@ -4,6 +4,7 @@ set expandtab
 set autoindent
 set shiftwidth=4
 set softtabstop=4
+set textwidth=80
 set showmatch
 set mat=5
 set ruler
@@ -25,6 +26,8 @@ autocmd FileType c set omnifunc=ccomplete#Complete
 nnoremap <silent> <C-\> :TlistToggle<CR>
 " Option-\ jumps to taglist buffer (OSX)
 nnoremap <silent> « <C-w>h
+" Option-/ jumps back to main buffer (OSX)
+noremap <silent> ÷ <C-w>l
 let Tlist_Auto_Highlight_Tag = 1
 let Tlist_Auto_Open = 1
 let TList_Auto_Update = 1

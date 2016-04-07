@@ -12,5 +12,8 @@ alias seba='source ENV/bin/activate'
 
 alias yo='terminal-notifier -title "Yo!" -message '
 
+alias box='cd ~/Documents/Box\ Sync/'
+alias db='cd ~/Documents/Dropbox/'
+
 # common tyop
 alias jbos=jobs

@@ -9,11 +9,11 @@ vbell on
 bindkey "^[Od" prev  # change window with ctrl-left
 bindkey "^[Oc" next  # change window with ctrl-right
 
-screen -t sys       0 
-screen -t model     1
-screen -t view      2 
-screen -t tmpl      3 
-screen -t sys       4 
+screen -t x0      0
+screen -t x1      1
+screen -t x2      2
+screen -t x3      3
+screen -t x4      4
 select 0
 
 #caption always "%?%{ Wk}%-Lw%?%{Rk}%n*%f %t%?(%u)%?%?%{Wk}%+Lw%? %{Rk}%=%c %{rk}%d/%M/%Y"

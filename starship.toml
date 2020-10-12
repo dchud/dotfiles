@@ -1,0 +1,29 @@
+[aws]
+disabled = true
+
+[hostname]
+disabled = false
+ssh_only = false
+format = "⟪[$hostname](#5a91bf)⟫ "
+
+[directory]
+disabled = false
+style = "#39ac39"
+
+[git_branch]
+disabled = false
+style = "#c44dff"
+
+[python]
+disabled = false
+symbol = "🐍 "
+style = "#0092cc"
+
+[jobs]
+disabled = false
+symbol = "&"
+threshold = 1
+
+[time]
+disabled = false
+format = "[$time](#ff884d) "

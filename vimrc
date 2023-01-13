@@ -1,4 +1,3 @@
-syntax on
 set nocompatible
 set expandtab
 set autoindent
@@ -10,6 +9,7 @@ set mat=5
 set ruler
 set noerrorbells
 set incsearch
+set updatetime=100
 map ? :set hls!<bar>set hls?<CR>
 inoremap <Nul> <C-x><C-o>
 
@@ -21,30 +21,58 @@ autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType c set omnifunc=ccomplete#Complete
 
-" taglist plugin config http://vim-taglist.sourceforge.net/manual.html
-" Ctrl-\ toggles view of taglist
-nnoremap <silent> <C-\> :TlistToggle<CR>
-" Option-\ jumps to taglist buffer (OSX)
-nnoremap <silent> « <C-w>h
-" Option-/ jumps back to main buffer (OSX)
-noremap <silent> ÷ <C-w>l
-let Tlist_Auto_Highlight_Tag = 1
-let Tlist_Auto_Open = 0
-let TList_Auto_Update = 1
-let Tlist_Exit_OnlyWindow = 1
-let Tlist_GainFocus_On_ToggleOpen = 1
+" Manage plugins w/plug
+call plug#begin()
+" The default plugin directory will be as follows:
+"   - Vim (Linux/macOS): '~/.vim/plugged'
+"   - Vim (Windows): '~/vimfiles/plugged'
+"   - Neovim (Linux/macOS/Windows): stdpath('data') . '/plugged'
+" You can specify a custom plugin directory by passing it as the argument
+"   - e.g. `call plug#begin('~/.vim/plugged')`
+"   - Avoid using standard Vim directory names like 'plugin'
 
-execute pathogen#infect()
-filetype plugin indent on
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
-let g:vim_markdown_folding_disabled=1
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_loc_list_height = 5
-let g:syntastic_python_pylint_args = "--load-plugins pylint-django"
-let g:syntastic_disabled_filetypes=['html']
+Plug 'airblade/vim-gitgutter'
+
+Plug 'dense-analysis/ale'
+
+Plug 'chrisbra/csv.vim'
+
+Plug 'preservim/vim-pencil'
+" This is an archived repo, but it still works to stop wrap in markdown code
+" blocks and tables
+Plug 'mattly/vim-markdown-enhancements'
+
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+
+" Initialize plugin system
+" - Automatically executes `filetype plugin indent on` and `syntax enable`.
+call plug#end()
+
+" see https://github.com/reedes/vim-pencil
+augroup pencil
+    autocmd!
+    autocmd FileType markdown,mkd,md    call pencil#init({'wrap': 'hard', 'autoformat': 1})
+augroup END
+
+" let g:vim_markdown_folding_disabled=1
+let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
+let g:markdown_syntax_conceal = 0
+
+let g:airline_powerline_fonts = 1
+let g:airline_theme='bubblegum'
+
+" let g:ale_linters_explicit = 0
+let g:ale_linters = {
+    \   '*': ['trim_whitespace']
+    \}
+let g:ale_fixers = {
+    \   '*': ['trim_whitespace'],
+    \   'python': ['black', 'isort']
+    \}
+let g:ale_fix_on_save = 1
+let g:ale_python_flake8_options = '--max-line-length=88 --ignore=W2,W3'
+
+let g:csv_highlight_column = 'y'

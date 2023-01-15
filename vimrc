@@ -93,3 +93,5 @@ nmap <silent> <c-j> :wincmd j<CR>
 nmap <silent> <c-h> :wincmd h<CR>
 nmap <silent> <c-l> :wincmd l<CR>
 
+" Hide tags files https://bolt80.com/gutentags/
+let g:gutentags_cache_dir = '~/.tags_cache'

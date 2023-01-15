@@ -47,6 +47,12 @@ Plug 'mattly/vim-markdown-enhancements'
 
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
+" Need to make this work with vim-pencil to autoformat tables, disable for now
+" Plug 'dhruvasagar/vim-table-mode'
+
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'preservim/tagbar'
+
 " Initialize plugin system
 " - Automatically executes `filetype plugin indent on` and `syntax enable`.
 call plug#end()
@@ -76,3 +82,14 @@ let g:ale_fix_on_save = 1
 let g:ale_python_flake8_options = '--max-line-length=88 --ignore=W2,W3'
 
 let g:csv_highlight_column = 'y'
+
+" assumes gutentags, tagbar installed
+nnoremap <silent> T :TagbarToggle<CR>
+
+" https://stackoverflow.com/a/6053341
+" Use ctrl-[hjkl] to select the active split
+nmap <silent> <c-k> :wincmd k<CR>
+nmap <silent> <c-j> :wincmd j<CR>
+nmap <silent> <c-h> :wincmd h<CR>
+nmap <silent> <c-l> :wincmd l<CR>
+

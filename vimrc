@@ -8,9 +8,14 @@ set showmatch
 set mat=5
 set ruler
 set noerrorbells
-set incsearch
 set updatetime=100
+set cursorline
+highlight CursorLine ctermbg=darkgrey
+set incsearch
+" highlight search hits
 map ? :set hls!<bar>set hls?<CR>
+" re-justify all text paragraphs below
+map = gqG
 inoremap <Nul> <C-x><C-o>
 
 autocmd FileType python set omnifunc=pythoncomplete#Complete
@@ -53,6 +58,10 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'preservim/tagbar'
 
+Plug 'luochen1990/rainbow'
+
+Plug 'terryma/vim-smooth-scroll'
+
 " Initialize plugin system
 " - Automatically executes `filetype plugin indent on` and `syntax enable`.
 call plug#end()
@@ -85,6 +94,9 @@ let g:csv_highlight_column = 'y'
 
 " assumes gutentags, tagbar installed
 nnoremap <silent> T :TagbarToggle<CR>
+let g:tagbar_compact = 1
+let g:tagbar_show_tag_linenumbers = 1
+let g:tagbar_wrap = 1
 
 " https://stackoverflow.com/a/6053341
 " Use ctrl-[hjkl] to select the active split
@@ -95,3 +107,11 @@ nmap <silent> <c-l> :wincmd l<CR>
 
 " Hide tags files https://bolt80.com/gutentags/
 let g:gutentags_cache_dir = '~/.tags_cache'
+
+let g:rainbow_active = 1
+
+" https://github.com/terryma/vim-smooth-scroll#quick-start
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 15, 2)<CR>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 15, 2)<CR>
+noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 15, 4)<CR>
+noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 15, 4)<CR>

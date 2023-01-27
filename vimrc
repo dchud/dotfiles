@@ -1,4 +1,5 @@
 set nocompatible
+set encoding=utf-8
 set expandtab
 set autoindent
 set shiftwidth=4
@@ -63,6 +64,8 @@ Plug 'luochen1990/rainbow'
 
 Plug 'terryma/vim-smooth-scroll'
 
+Plug 'Yggdroot/indentLine'
+
 " Initialize plugin system
 " - Automatically executes `filetype plugin indent on` and `syntax enable`.
 call plug#end()
@@ -102,12 +105,6 @@ let g:ale_python_flake8_options = '--max-line-length=88 --ignore=W2,W3'
 
 let g:csv_highlight_column = 'y'
 
-" assumes gutentags, tagbar installed
-nnoremap <silent> T :TagbarToggle<CR>
-let g:tagbar_compact = 1
-let g:tagbar_show_tag_linenumbers = 1
-let g:tagbar_wrap = 1
-
 " https://stackoverflow.com/a/6053341
 " Use ctrl-[hjkl] to select the active split
 nmap <silent> <c-k> :wincmd k<CR>
@@ -115,16 +112,24 @@ nmap <silent> <c-j> :wincmd j<CR>
 nmap <silent> <c-h> :wincmd h<CR>
 nmap <silent> <c-l> :wincmd l<CR>
 
-" Hide tags files https://bolt80.com/gutentags/
-let g:gutentags_cache_dir = '~/.tags_cache'
-
 let g:rainbow_active = 1
+
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
 " https://github.com/terryma/vim-smooth-scroll#quick-start
 noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 12, 2)<CR>
 noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 12, 2)<CR>
 noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 12, 4)<CR>
 noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 12, 4)<CR>
+
+" Hide tags files https://bolt80.com/gutentags/
+let g:gutentags_cache_dir = '~/.tags_cache'
+
+" assumes gutentags, tagbar installed
+nnoremap <silent> T :TagbarToggle<CR>
+let g:tagbar_compact = 1
+let g:tagbar_show_tag_linenumbers = 1
+let g:tagbar_wrap = 1
 
 " https://www.reddit.com/r/vim/comments/d77t6j/guide_how_to_setup_ctags_with_gutentags_properly/
 let g:gutentags_ctags_exclude = [

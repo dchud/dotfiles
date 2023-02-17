@@ -13,6 +13,7 @@ set updatetime=100
 set mouse=a
 set cursorline
 highlight CursorLine ctermbg=darkgrey
+highlight LineNr ctermfg=brown
 set incsearch
 " highlight search hits
 map ? :set hls!<bar>set hls?<CR>
@@ -55,7 +56,7 @@ Plug 'mattly/vim-markdown-enhancements'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
 " Need to make this work with vim-pencil to autoformat tables, disable for now
-" Plug 'dhruvasagar/vim-table-mode'
+Plug 'dhruvasagar/vim-table-mode'
 
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'preservim/tagbar'
@@ -65,6 +66,8 @@ Plug 'luochen1990/rainbow'
 Plug 'terryma/vim-smooth-scroll'
 
 Plug 'Yggdroot/indentLine'
+
+Plug 'Glench/Vim-Jinja2-Syntax'
 
 " Initialize plugin system
 " - Automatically executes `filetype plugin indent on` and `syntax enable`.
@@ -82,6 +85,18 @@ let g:markdown_syntax_conceal = 0
 
 let g:airline_powerline_fonts = 1
 let g:airline_theme='bubblegum'
+let g:airline#extensions#tabline#enabled = 1
+" https://stackoverflow.com/a/67880654, limit to 7
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>- <Plug>AirlineSelectPrevTab
+nmap <leader>+ <Plug>AirlineSelectNextTab
 
 " let g:ale_linters_explicit = 0
 " Next several suggested by https://www.rockyourcode.com/lint-your-markdown-files-in-vim/
@@ -93,7 +108,7 @@ let g:ale_sign_warning                = '⚠'
 highlight ALEErrorSign ctermbg        =NONE ctermfg=red
 highlight ALEWarningSign ctermbg      =NONE ctermfg=yellow
 let g:ale_linters = {
-    \   'md,markdown': ['mdl'],
+    \   'md,Rmd,markdown': ['mdl'],
     \}
 let g:ale_fix_on_save = 1
 

@@ -9,15 +9,18 @@ set showmatch
 set mat=5
 set ruler
 set noerrorbells
+set nospell
+set nocp
+filetype plugin on
 set updatetime=100
 set mouse=a
 set cursorline
 highlight CursorLine ctermbg=darkgrey
 highlight LineNr ctermfg=brown
 set incsearch
-" highlight search hits
+" '?' to toggle highlighting search hits
 map ? :set hls!<bar>set hls?<CR>
-" re-justify all text paragraphs below
+" '=' to re-justify all text paragraphs below cursor
 map = gqG
 inoremap <Nul> <C-x><C-o>
 
@@ -48,6 +51,8 @@ Plug 'dense-analysis/ale'
 
 Plug 'chrisbra/csv.vim'
 
+Plug 'gabrielelana/vim-markdown'
+
 Plug 'preservim/vim-pencil'
 " This is an archived repo, but it still works to stop wrap in markdown code
 " blocks and tables
@@ -56,7 +61,7 @@ Plug 'mattly/vim-markdown-enhancements'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
 " Need to make this work with vim-pencil to autoformat tables, disable for now
-Plug 'dhruvasagar/vim-table-mode'
+" Plug 'dhruvasagar/vim-table-mode'
 
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'preservim/tagbar'
@@ -69,6 +74,13 @@ Plug 'Yggdroot/indentLine'
 
 Plug 'Glench/Vim-Jinja2-Syntax'
 
+" 20230316 Testing file searching
+" Plug 'ctrlpvim/ctrlp.vim'
+Plug 'dyng/ctrlsf.vim'
+
+" 20230317 testing auto-completion
+Plug 'ycm-core/YouCompleteMe'
+
 " Initialize plugin system
 " - Automatically executes `filetype plugin indent on` and `syntax enable`.
 call plug#end()
@@ -76,7 +88,7 @@ call plug#end()
 " see https://github.com/reedes/vim-pencil
 augroup pencil
     autocmd!
-    autocmd FileType markdown,mkd,md    call pencil#init({'wrap': 'hard', 'autoformat': 1})
+    autocmd FileType markdown,mkd,md    call pencil#init({'wrap': 'hard', 'autoformat': 0})
 augroup END
 
 " let g:vim_markdown_folding_disabled=1
@@ -116,7 +128,10 @@ let g:ale_fixers = {
     \   '*': ['trim_whitespace', 'remove_trailing_lines'],
     \   'python': ['black', 'isort']
     \}
-let g:ale_python_flake8_options = '--max-line-length=88 --ignore=W2,W3'
+let g:ale_python_flake8_options = '--max-line-length=88 --ignore=W2,W3,W503'
+
+" vim-markdown turns it on by default, how rude
+let g:markdown_enable_spell_checking = 0
 
 let g:csv_highlight_column = 'y'
 
@@ -132,10 +147,14 @@ let g:rainbow_active = 1
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
 " https://github.com/terryma/vim-smooth-scroll#quick-start
-noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 12, 2)<CR>
-noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 12, 2)<CR>
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll/2, 12, 2)<CR>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll/2, 12, 2)<CR>
 noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 12, 4)<CR>
 noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 12, 4)<CR>
+
+" Jump to tag
+nn <M-g> :call JumpToDef()<cr>
+ino <M-g> <esc>:call JumpToDef()<cr>i
 
 " Hide tags files https://bolt80.com/gutentags/
 let g:gutentags_cache_dir = '~/.tags_cache'
@@ -145,6 +164,16 @@ nnoremap <silent> T :TagbarToggle<CR>
 let g:tagbar_compact = 1
 let g:tagbar_show_tag_linenumbers = 1
 let g:tagbar_wrap = 1
+
+" ctrlsf options
+nmap <C-p> <Plug>CtrlSFPrompt
+let g:ctrlsf_auto_close = {
+    \ "normal": 1,
+    \ "compact": 0,
+    \}
+
+" youcompleteme menu color options
+highlight Pmenu ctermfg=251 ctermbg=234 guifg=#c6c6c6 guibg=#121212
 
 " https://www.reddit.com/r/vim/comments/d77t6j/guide_how_to_setup_ctags_with_gutentags_properly/
 let g:gutentags_ctags_exclude = [

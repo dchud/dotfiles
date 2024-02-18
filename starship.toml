@@ -1,3 +1,5 @@
+command_timeout = 750
+
 [aws]
 disabled = true
 
@@ -5,6 +7,16 @@ disabled = true
 disabled = false
 ssh_only = false
 format = "⟪[$hostname](#5a91bf)⟫ "
+trim_at = ".mitre.org"
+
+[jobs]
+disabled = false
+symbol = "&"
+threshold = 1
+
+[time]
+disabled = false
+format = "[$time](#ff884d) "
 
 [directory]
 disabled = false
@@ -17,13 +29,21 @@ style = "#c44dff"
 [python]
 disabled = false
 symbol = "🐍 "
+pyenv_version_name = false
 style = "#0092cc"
 
-[jobs]
-disabled = false
-symbol = "&"
-threshold = 1
+[rlang]
+disabled = true
 
-[time]
-disabled = false
-format = "[$time](#ff884d) "
+[java]
+disabled = true
+style = "#0092cc"
+
+[docker_context]
+disabled = true
+
+[nodejs]
+disabled = true
+
+[rust]
+format = 'via [⚙️ $version](red bold)'

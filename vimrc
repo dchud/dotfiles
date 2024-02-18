@@ -13,8 +13,10 @@ set nospell
 set nocp
 filetype plugin on
 set updatetime=100
+" 2023-03-29 note: "enable mouse reporting" in iterm2 -> Terminal prefs
 set mouse=a
 set cursorline
+set scrolloff=10
 highlight CursorLine ctermbg=darkgrey
 highlight LineNr ctermfg=brown
 set incsearch
@@ -78,8 +80,14 @@ Plug 'Glench/Vim-Jinja2-Syntax'
 " Plug 'ctrlpvim/ctrlp.vim'
 Plug 'dyng/ctrlsf.vim'
 
-" 20230317 testing auto-completion
-Plug 'ycm-core/YouCompleteMe'
+" 20230410 Trying out nim
+Plug 'zah/nim.vim'
+
+Plug 'godlygeek/tabular'
+
+" 20231217 playing with rust
+" https://github.com/rust-lang/rust.vim
+Plug 'rust-lang/rust.vim'
 
 " Initialize plugin system
 " - Automatically executes `filetype plugin indent on` and `syntax enable`.
@@ -112,21 +120,27 @@ nmap <leader>+ <Plug>AirlineSelectNextTab
 
 " let g:ale_linters_explicit = 0
 " Next several suggested by https://www.rockyourcode.com/lint-your-markdown-files-in-vim/
+" 20230531 - explicit to listen to g:ale_linters and stop linting md
+let g:ale_linters_explicit = 1
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
 let g:ale_lint_on_save = 1
-let g:ale_sign_error                  = '✘'
-let g:ale_sign_warning                = '⚠'
-highlight ALEErrorSign ctermbg        =NONE ctermfg=red
-highlight ALEWarningSign ctermbg      =NONE ctermfg=yellow
+let g:ale_sign_error = '✘'
+let g:ale_sign_warning = '⚠'
+highlight ALEErrorSign ctermbg =NONE ctermfg=red
+highlight ALEWarningSign ctermbg =NONE ctermfg=yellow
+
+" 20230531 - stop markdown linting!
+"    \   'md,Rmd,markdown': ['mdl'],
 let g:ale_linters = {
-    \   'md,Rmd,markdown': ['mdl'],
+    \   "python": ["ruff"],
     \}
 let g:ale_fix_on_save = 1
 
+" remove isort from fixers, trying ruff!
 let g:ale_fixers = {
     \   '*': ['trim_whitespace', 'remove_trailing_lines'],
-    \   'python': ['black', 'isort']
+    \   'python': ['black', 'ruff', 'isort'],
     \}
 let g:ale_python_flake8_options = '--max-line-length=88 --ignore=W2,W3,W503'
 
@@ -145,6 +159,7 @@ nmap <silent> <c-l> :wincmd l<CR>
 let g:rainbow_active = 1
 
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+map \| :IndentLinesToggle<CR>
 
 " https://github.com/terryma/vim-smooth-scroll#quick-start
 noremap <silent> <c-u> :call smooth_scroll#up(&scroll/2, 12, 2)<CR>
@@ -171,9 +186,6 @@ let g:ctrlsf_auto_close = {
     \ "normal": 1,
     \ "compact": 0,
     \}
-
-" youcompleteme menu color options
-highlight Pmenu ctermfg=251 ctermbg=234 guifg=#c6c6c6 guibg=#121212
 
 " https://www.reddit.com/r/vim/comments/d77t6j/guide_how_to_setup_ctags_with_gutentags_properly/
 let g:gutentags_ctags_exclude = [
@@ -223,3 +235,6 @@ let g:gutentags_ctags_exclude = [
       \ '*.rar', '*.zip', '*.tar', '*.tar.gz', '*.tar.xz', '*.tar.bz2',
       \ '*.pdf', '*.doc', '*.docx', '*.ppt', '*.pptx',
       \ ]
+
+" 20231227
+let g:rustfmt_autosave = 1

@@ -15,6 +15,7 @@ filetype plugin on
 set updatetime=100
 " 2023-03-29 note: "enable mouse reporting" in iterm2 -> Terminal prefs
 set mouse=a
+set number
 set cursorline
 set scrolloff=10
 highlight CursorLine ctermbg=darkgrey
@@ -24,6 +25,8 @@ set incsearch
 map ? :set hls!<bar>set hls?<CR>
 " '=' to re-justify all text paragraphs below cursor
 map = gqG
+" '~' to toggle mundo
+map <leader>z :MundoToggle<CR>
 inoremap <Nul> <C-x><C-o>
 
 autocmd FileType python set omnifunc=pythoncomplete#Complete
@@ -89,6 +92,14 @@ Plug 'godlygeek/tabular'
 " https://github.com/rust-lang/rust.vim
 Plug 'rust-lang/rust.vim'
 
+" 20240328 ramping up react
+Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'peitalin/vim-jsx-typescript'
+
+Plug 'simnalamburt/vim-mundo'
+
 " Initialize plugin system
 " - Automatically executes `filetype plugin indent on` and `syntax enable`.
 call plug#end()
@@ -133,14 +144,18 @@ highlight ALEWarningSign ctermbg =NONE ctermfg=yellow
 " 20230531 - stop markdown linting!
 "    \   'md,Rmd,markdown': ['mdl'],
 let g:ale_linters = {
-    \   "python": ["ruff"],
+    \   "python": ["black", "ruff"],
+    \   "javascript": ["eslint"],
     \}
 let g:ale_fix_on_save = 1
 
 " remove isort from fixers, trying ruff!
 let g:ale_fixers = {
     \   '*': ['trim_whitespace', 'remove_trailing_lines'],
-    \   'python': ['black', 'ruff', 'isort'],
+    \   'python': ['black', 'isort', 'ruff'],
+    \   'javascript': ['prettier', 'eslint'],
+    \   'typescript': ['prettier', 'eslint'],
+    \   'typescriptreact': ['prettier', 'eslint']
     \}
 let g:ale_python_flake8_options = '--max-line-length=88 --ignore=W2,W3,W503'
 
@@ -236,5 +251,26 @@ let g:gutentags_ctags_exclude = [
       \ '*.pdf', '*.doc', '*.docx', '*.ppt', '*.pptx',
       \ ]
 
+" 20240416 add tsx for tagbar
+" https://github.com/preservim/tagbar/wiki#typescript
+let g:tagbar_type_typescript = {
+  \ 'ctagstype': 'typescript',
+  \ 'kinds': [
+    \ 'c:classes',
+    \ 'n:modules',
+    \ 'f:functions',
+    \ 'v:variables',
+    \ 'v:varlambdas',
+    \ 'm:members',
+    \ 'i:interfaces',
+    \ 'e:enums',
+  \ ]
+\ }
+
 " 20231227
 let g:rustfmt_autosave = 1
+
+" 20240520 https://simnalamburt.github.io/vim-mundo/
+" let g:mundo_width = 60
+let g:mundo_right = 1
+let g:mundo_preview_bottom = 1

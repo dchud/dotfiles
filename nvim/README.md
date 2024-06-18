@@ -8,6 +8,6 @@ Refer to the [documentation](https://lazyvim.github.io/installation) to get star
 - [x] navigate buffers by number
 - [x] rainbow parens
 - [x] smooth scroll
-- undo
+- [x] undo
+- [x] csv
 - pencil?
-- csv?

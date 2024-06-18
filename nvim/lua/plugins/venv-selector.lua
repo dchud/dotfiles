@@ -4,12 +4,6 @@ return {
     "neovim/nvim-lspconfig",
     "mfussenegger/nvim-dap",
     "mfussenegger/nvim-dap-python",
-    {
-      "nvim-telescope.nvim",
-      dependencies = {
-        "nvim-lua/plenary.nvim",
-      },
-    },
   },
   lazy = false,
   branch = "regexp",

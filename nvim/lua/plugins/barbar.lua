@@ -4,7 +4,7 @@ return {
     "lewis6991/gitsigns.nvim",
   },
   init = function()
-    vim.g.barbar_auto_setup = false
+    vim.g.barbar_auto_setup = true
   end,
   opts = {
     animation = true,
@@ -16,6 +16,11 @@ return {
     tabpages = true,
     clickable = true,
     focus_on_close = "left",
+    gitsigns = {
+      added = { enabled = true, icon = "+" },
+      changed = { enabled = true, icon = "~" },
+      deleted = { enabled = true, icon = "-" },
+    },
   },
   keys = {
     { "<leader>1", "<cmd>BufferGoto 1<cr>", desc = "Buffer 1" },

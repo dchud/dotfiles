@@ -15,7 +15,7 @@ return {
     },
     tabpages = true,
     clickable = true,
-    focus_on_close = "left",
+    focus_on_close = "previous",
     gitsigns = {
       added = { enabled = true, icon = "+" },
       changed = { enabled = true, icon = "~" },

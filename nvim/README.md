@@ -10,4 +10,4 @@ Refer to the [documentation](https://lazyvim.github.io/installation) to get star
 - [x] smooth scroll
 - [x] undo
 - [x] csv
-- pencil?
+- [x] pencil

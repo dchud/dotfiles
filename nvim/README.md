@@ -11,3 +11,7 @@ Refer to the [documentation](https://lazyvim.github.io/installation) to get star
 - [x] undo
 - [x] csv
 - [x] pencil
+- [x] disable barbar and go back to bufferline
+- [ ] note taking
+- [ ] disable snippets (at least for markdown)
+- [ ] handle buffer closing better (might relate to barbar etc.)

@@ -12,6 +12,11 @@ return {
     end
 
     local cmp = require("cmp")
+    cmp.setup({
+      completion = {
+        autocomplete = false,
+      },
+    })
 
     opts.mapping = vim.tbl_extend("force", opts.mapping, {
       ["<Tab>"] = cmp.mapping(function(fallback)

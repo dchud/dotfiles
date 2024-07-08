@@ -1,0 +1,14 @@
+alias brews='brew upgrade'
+alias jq='jaq'
+alias lx='eza --long --modified --icons --header --git' 
+alias nv='nvim'
+alias pipcache='pip download --dest ${HOME}/.pip-packages'
+alias pipupgrade="pip list --outdated --format=json | jq '.[].name' | xargs -n1 pip install -U"
+alias r='R'
+alias rm='rm -i'
+alias yo='terminal-notifier -group 24 -title yo -message'
+alias DONE='yo DONE!'
+
+alias -s md=nvim
+alias -s py=nvim
+alias -s txt=nvim

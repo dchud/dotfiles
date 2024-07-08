@@ -7,5 +7,12 @@ return {
       -- pyright will be automatically installed with mason and loaded with lspconfig
       pyright = {},
     },
+    require("lspconfig").ruff_lsp.setup({
+      init_options = {
+        settings = {
+          args = {},
+        },
+      },
+    }),
   },
 }

@@ -24,6 +24,7 @@ style = "#39ac39"
 
 [git_branch]
 disabled = false
+always_show_remote = false
 style = "#c44dff"
 
 [python]
@@ -43,7 +44,7 @@ style = "#0092cc"
 disabled = true
 
 [nodejs]
-disabled = true
+disabled = false
 
 [rust]
 format = 'via [⚙️ $version](red bold)'

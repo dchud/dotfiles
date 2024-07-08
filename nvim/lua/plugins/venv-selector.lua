@@ -13,4 +13,5 @@ return {
   keys = {
     { "<leader>cV", "<cmd>VenvSelect<cr>", desc = "Venv select" },
   },
+  notify_user_on_venv_activation = true,
 }

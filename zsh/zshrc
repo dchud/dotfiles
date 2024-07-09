@@ -137,8 +137,8 @@ unset key
 
 # path
 export PATH="/opt/homebrew/bin:$PATH"
-export PATH="/Users/$HOME/bin:$PATH"
-export PATH="/Users/$HOME/.cargo.bin:$PATH"
+export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/.cargo.bin:$PATH"
 
 # pyenv
 # https://github.com/pyenv/pyenv#installation

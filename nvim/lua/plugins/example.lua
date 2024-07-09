@@ -133,6 +133,7 @@ return {
         "tsx",
         "typescript",
         "vim",
+        "vimwiki",
         "yaml",
       },
     },

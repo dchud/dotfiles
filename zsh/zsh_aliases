@@ -1,6 +1,6 @@
 alias brews='brew upgrade'
 alias jq='jaq'
-alias lx='eza --long --modified --icons --header --git' 
+alias lx='eza --long --modified --icons --header --git'
 alias nv='nvim'
 alias pipcache='pip download --dest ${HOME}/.pip-packages'
 alias pipupgrade="pip list --outdated --format=json | jq '.[].name' | xargs -n1 pip install -U"
@@ -12,3 +12,19 @@ alias DONE='yo DONE!'
 alias -s md=nvim
 alias -s py=nvim
 alias -s txt=nvim
+
+# https://vimwiki.github.io/vimwikiwiki/Tips%20and%20Snips.html
+vimwiki () {
+    if [[ $# == 0 ]]
+    then
+        nvim +'VimwikiIndex'
+    elif [[ $1 == 'git' ]]
+    then
+        git -C ~/Documents/vimwiki/ ${@:2}
+    else
+        echo 'Usage: vimwiki [git] [args ...]'
+    fi
+}
+
+alias ji="nvim +'VimwikiDiaryIndex'"
+alias jj="nvim +'VimwikiMakeDiaryNote'"

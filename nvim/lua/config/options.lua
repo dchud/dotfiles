@@ -6,3 +6,5 @@ local opt = vim.opt
 
 -- opt.wrap = true
 opt.inccommand = "split"
+
+opt.colorcolumn = "80"

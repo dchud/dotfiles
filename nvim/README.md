@@ -15,4 +15,5 @@ Refer to the [documentation](https://lazyvim.github.io/installation) to get star
 - [x] disable completions until they make more sense
 - [x] disable snippets (at least for markdown)
 - [x] handle buffer closing better (use space-q-a instead of :qa)
-- [ ] note taking
+- [x] note taking
+- [x] scroll when cursor approaches top or bottom buffer

@@ -8,3 +8,5 @@ local opt = vim.opt
 opt.inccommand = "split"
 
 opt.colorcolumn = "80"
+
+opt.scrolloff = 12

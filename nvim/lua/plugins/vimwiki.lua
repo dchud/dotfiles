@@ -18,7 +18,7 @@ return {
     -- via https://mkaz.blog/working-with-vim/vimwiki
     vim.api.nvim_create_autocmd({ "BufNewFile" }, {
       pattern = { "*diary/20*.md" },
-      command = "0r! /Users/dlchudnov/bin/vimwiki-diary-template.py '%'",
+      command = "0r! DOTENV_PATH=/Users/dlchudnov/bin/.env /Users/dlchudnov/bin/vimwiki-diary-template.py '%'",
     })
   end,
   keys = {

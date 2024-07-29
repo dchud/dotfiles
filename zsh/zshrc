@@ -169,8 +169,11 @@ bindkey ']' autosuggest-accept
 eval "$(starship init zsh)"
 
 # Try oh-my-posh
-# eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/clean-detailed.omp.json)"
+# eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/takuya.omp.json)"
 # eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/prompt.toml)"
 
 # https://github.com/ajeetdsouza/zoxide?tab=readme-ov-file#installation
 eval "$(zoxide init zsh)"
+
+# https://docs.atuin.sh/guide/installation/
+eval "$(atuin init zsh --disable-up-arrow)"

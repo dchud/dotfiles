@@ -34,7 +34,7 @@ pyenv_version_name = false
 style = "#0092cc"
 
 [rlang]
-disabled = true
+disabled = false
 
 [java]
 disabled = true

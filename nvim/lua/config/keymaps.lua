@@ -5,4 +5,4 @@
 local map = vim.keymap.set
 
 -- Format text to 80 char width
-map("n", "<leader>F", "{!}fmt -w 80<cr>", { desc = "¶ → 80" })
+map("n", "<leader>F", "{!}fmt -w 80<cr>}", { desc = "¶ → 80" })

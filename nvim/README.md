@@ -17,3 +17,5 @@ Refer to the [documentation](https://lazyvim.github.io/installation) to get star
 - [x] handle buffer closing better (use space-q-a instead of :qa)
 - [x] note taking
 - [x] scroll when cursor approaches top or bottom buffer
+- [ ] disable markdown heading background highlighting
+- [x] add typewriter plugin

@@ -168,10 +168,6 @@ bindkey ']' autosuggest-accept
 # maybe try a zsh theme at some poihnt, but stick w this for now
 eval "$(starship init zsh)"
 
-# Try oh-my-posh
-# eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/takuya.omp.json)"
-# eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/prompt.toml)"
-
 # https://github.com/ajeetdsouza/zoxide?tab=readme-ov-file#installation
 eval "$(zoxide init zsh)"
 

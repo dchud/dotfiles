@@ -6,6 +6,7 @@ alias pipcache='pip download --dest ${HOME}/.pip-packages'
 alias pipupgrade="pip list --outdated --format=json | jq '.[].name' | xargs -n1 pip install -U"
 alias r='R'
 alias rm='rm -i'
+alias y='yazi'
 alias yo='terminal-notifier -group 24 -title yo -message'
 alias DONE='yo DONE!'
 

@@ -150,7 +150,8 @@ eval "$(pyenv virtualenv-init -)"
 
 export HOMEBREW_NO_ENV_HINTS=1
 
-export BAT_THEME=Coldark-Dark
+# export BAT_THEME=Coldark-Dark
+export BAT_THEME="Catppuccin Frappe"
 
 export EDITOR=nvim
 

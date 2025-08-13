@@ -27,5 +27,5 @@ vimwiki () {
     fi
 }
 
-alias ji="z Documents/vimwiki && nvim +'VimwikiDiaryIndex'"
-alias jj="z Documents/vimwiki && nvim +'VimwikiMakeDiaryNote'"
+alias vji="z Documents/vimwiki && nvim +'VimwikiDiaryIndex'"
+alias vjj="z Documents/vimwiki && nvim +'VimwikiMakeDiaryNote'"
